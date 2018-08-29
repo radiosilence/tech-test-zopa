@@ -1,0 +1,35 @@
+{
+  "name": "tech-test-monzo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "jsonwebtoken": "^8.3.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "react-scripts-ts": "2.17.0",
+    "redux": "^4.0.0",
+    "redux-observable": "^1.0.0",
+    "redux-rx-http": "1.0.5",
+    "reselect": "^3.0.1",
+    "rxjs": "^6.2.2",
+    "styled-components": "^3.4.5"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject",
+    "lint:fix": "tslint --fix -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.1",
+    "@types/node": "^10.9.3",
+    "@types/react": "^16.4.12",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-redux": "^6.0.6",
+    "tslint": "^5.11.0",
+    "tslint-config-radiosilence": "^1.0.0",
+    "typescript": "^3.0.1"
+  }
+}
