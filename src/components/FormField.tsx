@@ -22,8 +22,6 @@ const Input = styled.input`
     box-sizing: border-box;
     color: #222;
     border-bottom: 3px solid #cccccc;
-    // border-bottom-color: #141e64;
-    // border-bottom-color: #f86666;
     width: 100%;
 `
 
