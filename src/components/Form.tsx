@@ -17,9 +17,17 @@ class FormComponent extends React.Component<FormComponentProps> {
             <Pane>
                 <SectionTitle>Send money</SectionTitle>
                 <FormField
+                    label="Name"
                     name="name"
                     value="james"
-                    error="invalid"
+                    error="Please enter a valid name"
+                    onChange={() => {}}
+                />
+                <FormField
+                    label="Email address"
+                    name="email"
+                    value="jc@blit.cc"
+                    error="Please enter a valid email"
                     onChange={() => {}}
                 />
                 <Button>Send</Button>

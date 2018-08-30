@@ -15,6 +15,8 @@ injectGlobal`
     body, html {
         padding: 0;
         margin: 0;
+        font-family: Helvetica, sans-serif;
+        font-size: 16px;
         background-color: #00B9A5;
         height: 100%;
         color: #1a1a1a;

@@ -3,13 +3,17 @@ import styled from 'styled-components'
 export interface FormFieldProps {
     name: string
     value: string
+    label: string
     onChange: (a: string) => void
     error?: string
 }
 
 const Wrapper = styled.span`
     width: 100%;
-    padding: 0 0.5em 0 0.5em;
+    padding: 0;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
 `
 const Input = styled.input`
     font-size: 16px;
@@ -17,13 +21,22 @@ const Input = styled.input`
     padding: 10px 0;
     box-sizing: border-box;
     color: #222;
-    border-bottom: 3px solid #141e64;
+    border-bottom: 3px solid #cccccc;
+    // border-bottom-color: #141e64;
+    // border-bottom-color: #f86666;
     width: 100%;
 `
 
+const Label = styled.span`
+    font-size: 16px;
+    padding: 10px 0;
+    box-sizing: border-box;
+`
+
 const ErrorText = styled.span`
-    font-size: 0.75em;
-    color: #c82222;
+    font-size: 14px;
+    color: #f86666;
+    margin: 0.5em 0 2em 0;
 `
 
 const mkHandleChange = (name: string, cb: (a: string) => void) => (
@@ -33,8 +46,15 @@ const mkHandleChange = (name: string, cb: (a: string) => void) => (
     cb(event.currentTarget.value)
 }
 
-export const FormField = ({ name, value, onChange, error }: FormFieldProps) => (
+export const FormField = ({
+    name,
+    value,
+    label,
+    onChange,
+    error,
+}: FormFieldProps) => (
     <Wrapper>
+        <Label>{label}</Label>
         <Input value={value} onChange={mkHandleChange(name, onChange)} />
         <ErrorText>{error}</ErrorText>
     </Wrapper>
