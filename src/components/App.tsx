@@ -1,27 +1,25 @@
 import * as React from 'react'
+import styled from 'styled-components'
 import { Provider } from 'react-redux'
 import './App.css'
 
-import logo from './logo.svg'
 import createStore from '../create-store'
+import { Form } from './Form'
+import { Account } from './Account'
 
-class App extends React.Component {
+const Wrapper = styled.main``
+
+class Root extends React.Component {
     public render() {
         return (
             <Provider store={createStore()}>
-                <div className="App">
-                    <header className="App-header">
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <h1 className="App-title">Welcome to React</h1>
-                    </header>
-                    <p className="App-intro">
-                        To get started, edit <code>src/App.tsx</code> and save
-                        to reload.
-                    </p>
-                </div>
+                <Wrapper>
+                    <Form />
+                    <Account />
+                </Wrapper>
             </Provider>
         )
     }
 }
 
-export default App
+export default Root

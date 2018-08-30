@@ -1,6 +1,8 @@
-import app from './app'
+import account from './account'
+import form from './form'
 import { combineReducers } from 'redux'
 
 export default combineReducers({
-    app,
+    account,
+    form,
 })

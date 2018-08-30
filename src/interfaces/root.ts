@@ -1,4 +1,6 @@
-import { AppState } from './app'
+import { AccountState } from './account'
+import { FormState } from './form'
 export interface RootState {
-    app: AppState
+    account: AccountState
+    form: FormState
 }
