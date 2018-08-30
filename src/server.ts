@@ -8,6 +8,9 @@ import * as http from 'http'
 import { Decimal } from 'decimal.js'
 import { TransactionModel, AccountState } from './interfaces'
 
+const sleep = (interval: number) =>
+    new Promise((resolve) => setTimeout(resolve, interval))
+
 type Ctx = Koa.Context
 const app = new Koa()
 const router = new Router()
@@ -36,7 +39,11 @@ router.get('/account', async (ctx: Ctx) => {
 router.post('/transaction', async (ctx: Ctx) => {
     const transaction = ctx.request.body as TransactionModel
     database.account.transactions.push(transaction)
+    await sleep(Math.random() * 200)
+    ctx.body = { status: 'ok' }
+    await sleep(Math.random() * 200)
     io.emit('transaction', transaction)
 })
 
+io.on('connection', (msg) => {})
 server.listen(5555)
