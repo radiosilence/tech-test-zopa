@@ -12,7 +12,7 @@ interface TransactionsComponentProps extends TransactionsProps {
 }
 
 const Wrapper = styled.div``
-const Title = styled.h2``
+const Title = styled.h3``
 const TransactionList = styled.ol``
 
 class TransactionsComponent extends React.Component<
