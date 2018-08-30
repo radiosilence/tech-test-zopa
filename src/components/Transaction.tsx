@@ -20,6 +20,6 @@ export const Transaction = ({
             <Name>{name}</Name>
             <Email>{email}</Email>
         </Left>
-        <Amount>{amount}</Amount>
+        <Amount>£{amount.toFixed(2)}</Amount>
     </Wrapper>
 )
