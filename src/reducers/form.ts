@@ -3,9 +3,9 @@ import { FormAction, CLEAR_FORM, UPDATE_FORM, FORM_ERRORS } from '../actions'
 
 const initialState: FormState = {
     data: {
-        name: 'James',
-        email: 'jc@blit.cc',
-        amount: '100.00',
+        name: '',
+        email: '',
+        amount: '0.00',
     },
     dirty: false,
     errors: {},
