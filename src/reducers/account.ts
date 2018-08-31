@@ -1,6 +1,6 @@
 import { AccountState } from '../interfaces'
 import { Decimal } from 'decimal.js'
-import { AccountAction, PUSH_TRANSACTION } from '../actions'
+import { AccountAction, PUSH_TRANSACTION, SET_ACCOUNT } from '../actions'
 
 export const initialState: AccountState = {
     balance: new Decimal(5000.0),
@@ -21,6 +21,8 @@ export default (state: AccountState = initialState, action: AccountAction) => {
                 ...state,
                 transactions: [action.transaction, ...state.transactions],
             }
+        case SET_ACCOUNT:
+            return action.account
     }
     return state
 }

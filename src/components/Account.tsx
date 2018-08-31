@@ -6,12 +6,18 @@ import { Balance } from './Balance'
 import { Transactions } from './Transactions'
 import { SectionTitle } from './SectionTitle'
 import { Pane } from './Pane'
+import { loadAccount } from '../actions'
 
 interface AccountProps {}
 
-interface AccountComponentProps extends AccountProps {}
+interface AccountComponentProps extends AccountProps {
+    loadAccount: () => void
+}
 
 class AccountComponent extends React.Component<AccountComponentProps> {
+    public componentWillMount() {
+        this.props.loadAccount()
+    }
     public render() {
         return (
             <Pane>
@@ -27,7 +33,9 @@ const mapStateToProps = (state: RootState, ownProps: AccountProps) => ({
     ...ownProps,
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+    loadAccount,
+}
 
 export const Account = connect(mapStateToProps, mapDispatchToProps)(
     AccountComponent,

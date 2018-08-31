@@ -36,7 +36,5 @@ export const clearErrorsOnPost = (
     action$: ActionsObservable<RxHttpAction>,
     state$: StateObservable<RootState>,
 ) => action$.pipe(ofType(POST_FORM.REQUEST), mapTo(formErrors({})))
-// const handlePostValidForm = (
 
-// )
 export const formEpics = combineEpics(submitFormEpic, clearErrorsOnPost)
