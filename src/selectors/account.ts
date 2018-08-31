@@ -8,7 +8,7 @@ export const getBalance = (state: RootState) => getAccountState(state).balance
 export const getTransactions = (state: RootState) =>
     getAccountState(state).transactions
 
-export const getSumTransactions = createSelector(
+export const getSent = createSelector(
     [getTransactions],
     (transactions: TransactionModel[]) =>
         transactions.reduce(
@@ -18,7 +18,7 @@ export const getSumTransactions = createSelector(
 )
 
 export const getAvailable = createSelector(
-    [getBalance, getSumTransactions],
+    [getBalance, getSent],
     (balance: Decimal, sumTransactions: Decimal) =>
         balance.minus(sumTransactions),
 )

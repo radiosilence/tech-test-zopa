@@ -1,7 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { Root } from './components/Root'
-import './index.css'
 import registerServiceWorker from './registerServiceWorker'
 import { injectGlobal } from 'styled-components'
 import './validators'
@@ -31,6 +30,7 @@ injectGlobal`
         background-color: white;
         min-height: 100%;
     }
+    button:focus {outline:0;}
 `
 /* tslint:enable:no-unused-expression */
 

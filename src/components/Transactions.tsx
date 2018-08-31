@@ -13,7 +13,11 @@ interface TransactionsComponentProps extends TransactionsProps {
 
 const Wrapper = styled.div``
 const Title = styled.h3``
-const TransactionList = styled.ol``
+const TransactionList = styled.ol`
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+`
 
 class TransactionsComponent extends React.Component<
     TransactionsComponentProps

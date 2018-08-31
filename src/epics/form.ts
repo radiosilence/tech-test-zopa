@@ -14,7 +14,7 @@ import {
 } from '../actions'
 import { RootState } from '../interfaces'
 import { map, mapTo } from 'rxjs/operators'
-import { getFormData } from '../selectors'
+import { getFormData, getAvailable } from '../selectors'
 import { formConstraints } from '../constraints'
 import { RxHttpAction } from 'redux-rx-http'
 
@@ -25,8 +25,9 @@ export const submitFormEpic = (
     action$.pipe(
         ofType(SUBMIT_FORM),
         map(() => {
-            const data = getFormData(state$.value)
-            const errors = validate(data, formConstraints)
+            const state = state$.value
+            const data = getFormData(state)
+            const errors = validate(data, formConstraints(getAvailable(state)))
             if (!errors) return postForm(data)
             return formErrors(errors)
         }),

@@ -6,11 +6,30 @@ interface TransactionProps {
     transaction: TransactionModel
 }
 
-const Wrapper = styled.li``
-const Left = styled.span``
-const Name = styled.span``
-const Email = styled.span``
-const Amount = styled.span``
+const Wrapper = styled.li`
+    border-bottom: 1px solid #efefef;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+`
+const Left = styled.span`
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+`
+const Name = styled.span`
+    font-size: 18px;
+    padding: 5px 0;
+`
+const Email = styled.span`
+    font-size: 14px;
+`
+const Amount = styled.span`
+    flex: 0 0 auto;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 0;
+`
 
 export const Transaction = ({
     transaction: { name, email, amount },
