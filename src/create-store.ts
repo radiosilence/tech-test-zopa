@@ -5,10 +5,8 @@ import { createRxHttpEpic } from 'redux-rx-http'
 import rootReducer from './reducers'
 import { RootState } from './interfaces'
 
-import * as io from 'socket.io-client'
-import { pushTransaction } from './actions'
-import { parseRawTransaction, RawTransactionModel } from './utils'
 import { rootEpic } from './epics'
+import { initializeSocket } from './initializeSocket'
 
 const rxHttpEpic = createRxHttpEpic((state: RootState) => ({
     baseUrl: 'http://localhost:5555',
@@ -30,14 +28,6 @@ export default () => {
     )
 
     epicMiddleware.run(combineEpics(rxHttpEpic, rootEpic))
-
-    const socket = io.connect('http://localhost:5555')
-
-    // TODO: Move this code to somewhere more sensible
-    socket.emit('connection', 'hello')
-    socket.on('transaction', (transaction: RawTransactionModel) => {
-        console.log('Transaction!', transaction)
-        store.dispatch(pushTransaction(parseRawTransaction(transaction)))
-    })
+    initializeSocket(store)
     return store
 }
