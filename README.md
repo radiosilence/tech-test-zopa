@@ -21,8 +21,8 @@ Hello and welcome to the tech test I've built for Zopa!
   * Outgoing transactions are posted via HTTP
   * Incoming data is done through socket.io, simulating "push" transactions
   * Demonstration of how epics can be used to do validation/submission
-  * Any data access is done through selectors so changing structure of state is
-    simple.
+  * Any data access is done through (re)selectors so changing structure of
+    state is simple.
   * styled-components
 
 ## In order to run:
