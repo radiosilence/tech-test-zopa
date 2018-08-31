@@ -1,3 +1,4 @@
 import { combineEpics } from 'redux-observable'
+import { formEpics } from './form'
 
-export default combineEpics([])
+export const rootEpic = combineEpics(formEpics)

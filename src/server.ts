@@ -1,6 +1,9 @@
 import * as Koa from 'koa'
 import * as Router from 'koa-router'
-import * as bodyParser from 'koa-bodyparser'
+import * as koaBody from 'koa-body'
+import * as uuid from 'uuid'
+import accepts from 'koa-accepts'
+const cors = require('@koa/cors')
 
 import * as IO from 'socket.io'
 import * as http from 'http'
@@ -8,15 +11,17 @@ import * as http from 'http'
 import { Decimal } from 'decimal.js'
 import { TransactionModel, AccountState } from './interfaces'
 
-const sleep = (interval: number) =>
-    new Promise((resolve) => setTimeout(resolve, interval))
+// const sleep = (interval: number) =>
+//     new Promise((resolve) => setTimeout(resolve, interval))
 
 type Ctx = Koa.Context
 const app = new Koa()
 const router = new Router()
 
+app.use(koaBody())
+app.use(cors())
+app.use(accepts())
 app.use(router.routes())
-app.use(bodyParser())
 
 const server = http.createServer(app.callback())
 const io = IO(server)
@@ -37,11 +42,16 @@ router.get('/account', async (ctx: Ctx) => {
 })
 
 router.post('/transaction', async (ctx: Ctx) => {
-    const transaction = ctx.request.body as TransactionModel
+    console.log('request', ctx.request)
+    console.log('transactionr', ctx.request.body)
+    const transaction = {
+        ...(ctx.request.body as TransactionModel),
+        id: uuid(),
+    }
     database.account.transactions.push(transaction)
-    await sleep(Math.random() * 200)
-    ctx.body = { status: 'ok' }
-    await sleep(Math.random() * 200)
+    // await sleep(Math.random() * 200)
+    ctx.body = ctx.request.body
+    // await sleep(Math.random() * 200)
     io.emit('transaction', transaction)
 })
 

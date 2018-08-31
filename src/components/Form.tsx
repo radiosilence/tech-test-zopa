@@ -1,45 +1,75 @@
 import * as React from 'react'
-// import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { RootState } from '../interfaces'
+import { RootState, FormData } from '../interfaces'
 import { SectionTitle } from './SectionTitle'
 import { FormField } from './FormField'
 import { Pane } from './Pane'
 import { Button } from './Button'
+import { updateForm, submitForm } from '../actions'
+import { getFormData, getFormDirty, getFormErrors } from '../selectors'
+import { Dictionary } from 'lodash'
 
 interface FormProps {}
 
-interface FormComponentProps extends FormProps {}
+interface FormComponentProps extends FormProps {
+    updateForm: (a: string, b: string) => void
+    submitForm: () => void
+    data: FormData
+    dirty: boolean
+    errors: Dictionary<string>
+}
 
 class FormComponent extends React.Component<FormComponentProps> {
     public render() {
+        const { data, errors } = this.props
         return (
             <Pane>
-                <SectionTitle>Send money</SectionTitle>
-                <FormField
-                    label="Name"
-                    name="name"
-                    value="james"
-                    error="Please enter a valid name"
-                    onChange={() => {}}
-                />
-                <FormField
-                    label="Email address"
-                    name="email"
-                    value="jc@blit.cc"
-                    error="Please enter a valid email"
-                    onChange={() => {}}
-                />
-                <Button>Send</Button>
+                <form onSubmit={this.handleSubmit}>
+                    <SectionTitle>Send money</SectionTitle>
+                    <FormField
+                        label="Name"
+                        name="name"
+                        value={data.name}
+                        error={errors.name}
+                        onChange={this.props.updateForm}
+                    />
+                    <FormField
+                        label="Email address"
+                        name="email"
+                        value={data.email}
+                        error={errors.email}
+                        onChange={this.props.updateForm}
+                    />
+                    <FormField
+                        label="Amount"
+                        name="amount"
+                        value={data.amount}
+                        error={errors.amount}
+                        onChange={this.props.updateForm}
+                    />
+                    <Button onClick={this.handleSubmit}>Send</Button>
+                </form>
             </Pane>
         )
+    }
+
+    private handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault()
+        console.log('submitting')
+        this.props.submitForm()
     }
 }
 
 const mapStateToProps = (state: RootState, ownProps: FormProps) => ({
     ...ownProps,
+    data: getFormData(state),
+    dirty: getFormDirty(state),
+    errors: getFormErrors(state),
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+    updateForm,
+    submitForm,
+}
 
 export const Form = connect(mapStateToProps, mapDispatchToProps)(FormComponent)

@@ -1,12 +1,12 @@
 import { Dictionary } from 'lodash'
-import Decimal from 'decimal.js'
 
+export interface FormData {
+    name: string
+    email: string
+    amount: string
+}
 export interface FormState {
-    data: {
-        name: string
-        email: string
-        amount: Decimal
-    }
+    data: FormData
     dirty: boolean
     errors: Dictionary<string>
 }

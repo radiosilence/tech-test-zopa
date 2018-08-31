@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { RootState, TransactionModel } from '../interfaces'
 import { Transaction } from './Transaction'
-import { getTransactions } from '../selectors/account'
+import { getTransactions } from '../selectors'
 
 interface TransactionsProps {}
 

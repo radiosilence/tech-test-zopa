@@ -4,7 +4,7 @@ export interface FormFieldProps {
     name: string
     value: string
     label: string
-    onChange: (a: string) => void
+    onChange: (a: string, b: string) => void
     error?: string
 }
 
@@ -37,11 +37,11 @@ const ErrorText = styled.span`
     margin: 0.5em 0 2em 0;
 `
 
-const mkHandleChange = (name: string, cb: (a: string) => void) => (
+const mkHandleChange = (name: string, cb: (a: string, b: string) => void) => (
     event: React.FormEvent<HTMLInputElement>,
 ) => {
     event.preventDefault()
-    cb(event.currentTarget.value)
+    cb(name, event.currentTarget.value)
 }
 
 export const FormField = ({

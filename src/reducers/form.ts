@@ -1,12 +1,11 @@
 import { FormState } from '../interfaces'
-import Decimal from 'decimal.js'
-import { FormAction, CLEAR_FORM, UPDATE_FORM } from '../actions'
+import { FormAction, CLEAR_FORM, UPDATE_FORM, FORM_ERRORS } from '../actions'
 
 const initialState: FormState = {
     data: {
-        name: '',
-        email: '',
-        amount: new Decimal(0.0),
+        name: 'James',
+        email: 'jc@blit.cc',
+        amount: '100.00',
     },
     dirty: false,
     errors: {},
@@ -22,6 +21,11 @@ export default (state: FormState = initialState, action: FormAction) => {
                     [action.field]: action.value,
                 },
                 dirty: true,
+            }
+        case FORM_ERRORS:
+            return {
+                ...state,
+                errors: action.errors,
             }
         case CLEAR_FORM:
             return initialState

@@ -4,6 +4,7 @@ import { Root } from './components/Root'
 import './index.css'
 import registerServiceWorker from './registerServiceWorker'
 import { injectGlobal } from 'styled-components'
+import './validators'
 
 /* tslint:disable:no-unused-expression */
 injectGlobal`
