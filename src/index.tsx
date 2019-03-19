@@ -5,11 +5,13 @@ import registerServiceWorker from './registerServiceWorker'
 import { injectGlobal } from 'styled-components'
 import './validators'
 
+const AlverataBlack = require('./Alverata-Black.otf')
+
 /* tslint:disable:no-unused-expression */
 injectGlobal`
     @font-face {
         font-family: Alverata Black;
-        src: url(/Alverata-Black.otf);
+        src: url('${AlverataBlack}');
     }
 
     body, html {
