@@ -9,25 +9,21 @@ import { rootEpic } from './epics'
 import { initializeSocket } from './initializeSocket'
 
 const rxHttpEpic = createRxHttpEpic((state: RootState) => ({
-    baseUrl: 'http://localhost:5555',
-    headers: {
-        'content-type': 'application/json',
-    },
+  baseUrl: 'http://localhost:5555',
+  headers: {
+    'content-type': 'application/json',
+  },
 }))
 const epicMiddleware = createEpicMiddleware({
-    dependencies: { fetch },
+  dependencies: { fetch },
 })
 
 export default () => {
-    const composeEnhancers =
-        (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+  const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-    const store = createStore(
-        rootReducer,
-        composeEnhancers(applyMiddleware(epicMiddleware)),
-    )
+  const store = createStore(rootReducer, composeEnhancers(applyMiddleware(epicMiddleware)))
 
-    epicMiddleware.run(combineEpics(rxHttpEpic, rootEpic))
-    initializeSocket(store)
-    return store
+  epicMiddleware.run(combineEpics(rxHttpEpic, rootEpic))
+  initializeSocket(store)
+  return store
 }

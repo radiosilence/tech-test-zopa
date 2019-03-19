@@ -10,50 +10,42 @@ export const POST_FORM = createRxHttpActionTypes('POST_FORM')
 export const FORM_ERRORS = 'FORM_ERRORS'
 
 export interface UpdateFormAction {
-    type: typeof UPDATE_FORM
-    field: string
-    value: string | Decimal
+  type: typeof UPDATE_FORM
+  field: string
+  value: string | Decimal
 }
 export interface ClearFormAction {
-    type: typeof CLEAR_FORM
+  type: typeof CLEAR_FORM
 }
 
 export interface SubmitFormAction {
-    type: typeof SUBMIT_FORM
+  type: typeof SUBMIT_FORM
 }
 
 export interface FormErrorsAction {
-    type: typeof FORM_ERRORS
-    errors: Dictionary<string>
+  type: typeof FORM_ERRORS
+  errors: Dictionary<string>
 }
 
-export type FormAction =
-    | UpdateFormAction
-    | ClearFormAction
-    | SubmitFormAction
-    | FormErrorsAction
+export type FormAction = UpdateFormAction | ClearFormAction | SubmitFormAction | FormErrorsAction
 
-export const updateForm = (
-    field: string,
-    value: string | Decimal,
-): UpdateFormAction => ({
-    type: UPDATE_FORM,
-    field,
-    value,
+export const updateForm = (field: string, value: string | Decimal): UpdateFormAction => ({
+  type: UPDATE_FORM,
+  field,
+  value,
 })
 
 export const clearForm = (): ClearFormAction => ({
-    type: CLEAR_FORM,
+  type: CLEAR_FORM,
 })
 
 export const submitForm = (): SubmitFormAction => ({
-    type: SUBMIT_FORM,
+  type: SUBMIT_FORM,
 })
 
-export const postForm = (data: FormData) =>
-    rxHttpPost('/transaction', POST_FORM, data)
+export const postForm = (data: FormData) => rxHttpPost('/transaction', POST_FORM, data)
 
 export const formErrors = (errors: Dictionary<string>): FormErrorsAction => ({
-    type: FORM_ERRORS,
-    errors,
+  type: FORM_ERRORS,
+  errors,
 })

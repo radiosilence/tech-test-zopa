@@ -11,32 +11,33 @@ import { loadAccount } from '../actions'
 interface AccountProps {}
 
 interface AccountComponentProps extends AccountProps {
-    loadAccount: () => void
+  loadAccount: () => void
 }
 
 class AccountComponent extends React.Component<AccountComponentProps> {
-    public componentWillMount() {
-        this.props.loadAccount()
-    }
-    public render() {
-        return (
-            <Pane>
-                <SectionTitle>My account</SectionTitle>
-                <Balance />
-                <Transactions />
-            </Pane>
-        )
-    }
+  public componentWillMount() {
+    this.props.loadAccount()
+  }
+  public render() {
+    return (
+      <Pane>
+        <SectionTitle>My account</SectionTitle>
+        <Balance />
+        <Transactions />
+      </Pane>
+    )
+  }
 }
 
 const mapStateToProps = (state: RootState, ownProps: AccountProps) => ({
-    ...ownProps,
+  ...ownProps,
 })
 
 const mapDispatchToProps = {
-    loadAccount,
+  loadAccount,
 }
 
-export const Account = connect(mapStateToProps, mapDispatchToProps)(
-    AccountComponent,
-)
+export const Account = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AccountComponent)

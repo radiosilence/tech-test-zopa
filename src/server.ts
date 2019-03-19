@@ -27,32 +27,32 @@ const server = http.createServer(app.callback())
 const io = IO(server)
 
 interface Database {
-    account: AccountState
+  account: AccountState
 }
 
 const database: Database = {
-    account: {
-        balance: new Decimal(5000.0),
-        transactions: [],
-    },
+  account: {
+    balance: new Decimal(5000.0),
+    transactions: [],
+  },
 }
 
 router.get('/account', async (ctx: Ctx) => {
-    ctx.body = database.account
+  ctx.body = database.account
 })
 
 router.post('/transaction', async (ctx: Ctx) => {
-    console.log('request', ctx.request)
-    console.log('transactionr', ctx.request.body)
-    const transaction = {
-        ...(ctx.request.body as TransactionModel),
-        id: uuid(),
-    }
-    database.account.transactions.push(transaction)
-    // await sleep(Math.random() * 200)
-    ctx.body = ctx.request.body
-    // await sleep(Math.random() * 200)
-    io.emit('transaction', transaction)
+  console.log('request', ctx.request)
+  console.log('transactionr', ctx.request.body)
+  const transaction = {
+    ...(ctx.request.body as TransactionModel),
+    id: uuid(),
+  }
+  database.account.transactions.push(transaction)
+  // await sleep(Math.random() * 200)
+  ctx.body = ctx.request.body
+  // await sleep(Math.random() * 200)
+  io.emit('transaction', transaction)
 })
 
 io.on('connection', (msg) => {})

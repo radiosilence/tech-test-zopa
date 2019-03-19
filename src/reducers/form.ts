@@ -2,33 +2,33 @@ import { FormState } from '../interfaces'
 import { FormAction, CLEAR_FORM, UPDATE_FORM, FORM_ERRORS } from '../actions'
 
 const initialState: FormState = {
-    data: {
-        name: '',
-        email: '',
-        amount: '0.00',
-    },
-    dirty: false,
-    errors: {},
+  data: {
+    name: '',
+    email: '',
+    amount: '0.00',
+  },
+  dirty: false,
+  errors: {},
 }
 
 export default (state: FormState = initialState, action: FormAction) => {
-    switch (action.type) {
-        case UPDATE_FORM:
-            return {
-                ...state,
-                data: {
-                    ...state.data,
-                    [action.field]: action.value,
-                },
-                dirty: true,
-            }
-        case FORM_ERRORS:
-            return {
-                ...state,
-                errors: action.errors,
-            }
-        case CLEAR_FORM:
-            return initialState
-    }
-    return state
+  switch (action.type) {
+    case UPDATE_FORM:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.field]: action.value,
+        },
+        dirty: true,
+      }
+    case FORM_ERRORS:
+      return {
+        ...state,
+        errors: action.errors,
+      }
+    case CLEAR_FORM:
+      return initialState
+  }
+  return state
 }
