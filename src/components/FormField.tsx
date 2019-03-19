@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { SFC } from 'react'
 import styled from 'styled-components'
 export interface FormFieldProps {
   name: string
@@ -44,7 +44,7 @@ const mkHandleChange = (name: string, cb: (a: string, b: string) => void) => (
   cb(name, event.currentTarget.value)
 }
 
-export const FormField = ({ name, value, label, onChange, error }: FormFieldProps) => (
+export const FormField: SFC<FormFieldProps> = ({ name, value, label, onChange, error }) => (
   <Wrapper>
     <Label>{label}</Label>
     <Input value={value} onChange={mkHandleChange(name, onChange)} />

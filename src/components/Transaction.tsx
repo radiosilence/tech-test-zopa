@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { SFC } from 'react'
 import styled from 'styled-components'
 import { TransactionModel } from '../interfaces'
 
@@ -31,7 +31,7 @@ const Amount = styled.span`
   padding: 10px 0;
 `
 
-export const Transaction = ({ transaction: { name, email, amount } }: TransactionProps) => (
+export const Transaction: SFC<TransactionProps> = ({ transaction: { name, email, amount } }) => (
   <Wrapper>
     <Left>
       <Name>{name}</Name>

@@ -17,6 +17,7 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
@@ -27,6 +28,7 @@
   "exclude": [
     "node_modules",
     "dist",
+    "build",
     "scripts",
     "acceptance-tests",
     "webpack",

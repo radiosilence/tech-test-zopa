@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import * as ReactDOM from 'react-dom'
 import { Root } from './components/Root'
 import registerServiceWorker from './registerServiceWorker'
-import { injectGlobal } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 import './validators'
 
 const AlverataBlack = require('./Alverata-Black.otf')
 
 /* tslint:disable:no-unused-expression */
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: Alverata Black;
         src: url('${AlverataBlack}');
@@ -36,5 +36,11 @@ injectGlobal`
 `
 /* tslint:enable:no-unused-expression */
 
-ReactDOM.render(<Root />, document.getElementById('root') as HTMLElement)
+ReactDOM.render(
+  <Fragment>
+    <GlobalStyle />
+    <Root />
+  </Fragment>,
+  document.getElementById('root') as HTMLElement,
+)
 registerServiceWorker()
