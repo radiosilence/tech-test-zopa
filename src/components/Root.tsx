@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import { Provider } from 'react-redux'
 
@@ -14,7 +14,7 @@ const Wrapper = styled.main`
   background-color: white;
 `
 
-export class Root extends React.Component {
+export class Root extends PureComponent {
   public render() {
     return (
       <Provider store={createStore()}>

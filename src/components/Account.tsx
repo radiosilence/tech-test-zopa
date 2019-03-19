@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { PureComponent } from 'react'
 // import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { RootState } from '../interfaces'
@@ -14,7 +14,7 @@ interface AccountComponentProps extends AccountProps {
   loadAccount: () => void
 }
 
-class AccountComponent extends React.Component<AccountComponentProps> {
+class AccountComponent extends PureComponent<AccountComponentProps> {
   public componentWillMount() {
     this.props.loadAccount()
   }

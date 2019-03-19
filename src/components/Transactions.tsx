@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { RootState, TransactionModel } from '../interfaces'
@@ -19,7 +19,7 @@ const TransactionList = styled.ol`
   padding: 0;
 `
 
-class TransactionsComponent extends React.Component<TransactionsComponentProps> {
+class TransactionsComponent extends PureComponent<TransactionsComponentProps> {
   public render() {
     return (
       <Wrapper>

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { RootState } from '../interfaces'
@@ -40,7 +40,7 @@ const Key = styled.div`
   font-size: 14px;
 `
 
-class BalanceComponent extends React.Component<BalanceComponentProps> {
+class BalanceComponent extends PureComponent<BalanceComponentProps> {
   public render() {
     return (
       <Wrapper>

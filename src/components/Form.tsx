@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { memo, PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { RootState, FormData } from '../interfaces'
 import { SectionTitle } from './SectionTitle'
@@ -19,7 +19,7 @@ interface FormComponentProps extends FormProps {
   errors: Dictionary<string>
 }
 
-class FormComponent extends React.Component<FormComponentProps> {
+class FormComponent extends PureComponent<FormComponentProps> {
   public render() {
     const { data, errors } = this.props
     return (
@@ -66,7 +66,9 @@ const mapDispatchToProps = {
   submitForm,
 }
 
-export const Form = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(FormComponent)
+export const Form = memo(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(FormComponent),
+)
