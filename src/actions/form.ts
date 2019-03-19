@@ -1,7 +1,7 @@
 import Decimal from 'decimal.js'
 import { FormData } from '../interfaces'
 import { rxHttpPost, createRxHttpActionTypes } from 'redux-rx-http'
-import { Dictionary } from 'lodash'
+import { Dictionary } from 'ramda'
 
 export const UPDATE_FORM = 'UPDATE_FORM'
 export const CLEAR_FORM = 'CLEAR_FORM'

@@ -1,4 +1,4 @@
-import { Dictionary } from 'lodash'
+import { Dictionary } from 'ramda'
 
 export interface FormData {
     name: string
